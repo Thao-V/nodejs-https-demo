@@ -7,8 +7,10 @@ const options = {
 }
 const server = https.createServer(options);
 server.on('request', (req, res) => {
-    res.write('hello world');
-    res.end();
+    // res.write('hello world');
+    // res.end();
+    const readable = fs.createReadStream('index.html');
+    readable.pipe(res);
 })
 
 server.listen(8443, () => console.log('listening on 8443...'));
